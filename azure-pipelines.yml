@@ -9,7 +9,7 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'b0b62edc-5a8b-4b5f-84e9-7f5c92542b77'
+  #azureSubscription: '2f5597c4-eec3-493f-aefa-ca20c3b3e83e'
 
   # Web app name
   webAppName: 'ajaygoud'
@@ -62,7 +62,10 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure Web App Deploy: ajaygoud558'
             inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
+              azureSubscription: 'Pay-As-You-Go (2f5597c4-eec3-493f-aefa-ca20c3b3e83e)'
+              appType: 'webAppLinux'
+              appName: '$(webAppName)'
+              deployToSlotOrASE: true
+              slotName: 'production'
               package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
+              runtimeStack: 'PHP|8.1'
