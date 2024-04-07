@@ -12,13 +12,13 @@ variables:
   azureSubscription: '2f5597c4-eec3-493f-aefa-ca20c3b3e83e'
 
   # Web app name
-  webAppName: 'ajaygoud'
+  # webAppName: 'ajaygoud'
 
   # Environment name
   environmentName: 'ajay'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  # vmImageName: 'ubuntu-latest'
 
 stages:
 - stage: Build
@@ -26,8 +26,8 @@ stages:
   jobs:
   - job: MavenPackageAndPublishArtifacts
     displayName: Maven Package and Publish Artifacts
-    pool: 
-      vmImage: $(vmImageName)
+    pool: 'ajay1'
+      # vmImage: $(vmImageName)
 
     steps:
     - task: Maven@3
@@ -53,8 +53,8 @@ stages:
   - deployment: DeployLinuxWebApp
     displayName: Deploy Linux Web App
     environment: $(environmentName)
-    pool:
-      vmImage: $(vmImageName)
+    pool: 'ajay1'
+      # vmImage: $(vmImageName)
     strategy:
       runOnce:
         deploy:
